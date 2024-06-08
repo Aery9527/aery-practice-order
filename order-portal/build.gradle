@@ -1,0 +1,4 @@
+dependencies {
+    implementation project(':order-core')
+    implementation project(':order-customer')
+}

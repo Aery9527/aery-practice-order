@@ -1,0 +1,4 @@
+dependencies {
+    api project(':order-api')
+    api project(':order-utils')
+}
