@@ -3,13 +3,16 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/misty-utils" />
             <option value="$PROJECT_DIR$/order-api" />
             <option value="$PROJECT_DIR$/order-core" />
+            <option value="$PROJECT_DIR$/order-customer" />
             <option value="$PROJECT_DIR$/order-portal" />
             <option value="$PROJECT_DIR$/order-utils" />
           </set>

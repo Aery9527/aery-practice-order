@@ -28,13 +28,13 @@ project structure:
 
 | subproject                         | description                                                                                          |
 |------------------------------------|------------------------------------------------------------------------------------------------------|
-| [misty-utils](misty-utils)         | 來自另一個 repo 的 專案(用 git submodule引入), 為我長年工作累積的工具, 是僅相依 `slf4j-api` 的專案                                |
+| [misty-utils](misty-utils)         | 來自另一個 repo 用 git submodule 引入, 為我長年工作累積的工具包, 僅相依 `slf4j-api` 的 java 原生專案                             |
 | [order-api](./order-api)           | 定義可操作訂單匹配系統的介面                                                                                       |
 | [order-core](./order-core)         | 主要核心程式碼                                                                                              |
 | [order-customer](./order-customer) | 用來模擬客戶送出買賣訂單的系統                                                                                      |
 | [order-portal](./order-portal)     | 整合測試入口, 可以用來啟動多個 [order-core](./order-core) (模擬分散式架構) 與 一個 [order-customer](./order-customer) 模擬系統運作 |
-| [order-utils](./order-utils)       | 跟訂單匹配系統核心邏輯無關的一些工具, 如果需要抽換 [order-core](./order-core) 則可以沿用                                          |
+| [order-utils](./order-utils)       | 跟訂單匹配系統核心邏輯無關的一些工具, 採用 spring 3 autoconfig 載入, 如果需要抽換 [order-core](./order-core) 則可以沿用               |
 
 - 採用 java9 JPMS 隔離專案存取權限
-- 所以專案都採用 `ServiceLoader` 來載入實作, 解偶 `order-portal` 與實作, 方便以後抽換實作
+- 使用 `ServiceLoader` 來載入實作, 解耦 `order-portal` 與實作, 方便以後抽換實作
 
