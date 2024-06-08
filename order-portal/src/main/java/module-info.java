@@ -1,5 +1,5 @@
 module aery.practice.order.portal {
 
-    requires aery.practice.order.core;
+    requires aery.practice.order.api;
 
 }

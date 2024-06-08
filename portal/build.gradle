@@ -1,8 +1,0 @@
-plugins {
-    id "io.spring.dependency-management" version "${VERSION_IO_SPRING_DEPENDENCY_MANAGEMENT}"
-    id 'org.springframework.boot' version "${VERSION_ORG_SPRINGFRAMEWORK_BOOT}"
-}
-
-dependencies {
-
-}
