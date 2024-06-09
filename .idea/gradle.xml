@@ -11,10 +11,15 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/misty-utils" />
-            <option value="$PROJECT_DIR$/order-api" />
-            <option value="$PROJECT_DIR$/order-core" />
             <option value="$PROJECT_DIR$/order-customer" />
-            <option value="$PROJECT_DIR$/order-portal" />
+            <option value="$PROJECT_DIR$/order-matcher-api" />
+            <option value="$PROJECT_DIR$/order-matcher-core" />
+            <option value="$PROJECT_DIR$/order-portal-api" />
+            <option value="$PROJECT_DIR$/order-portal-core" />
+            <option value="$PROJECT_DIR$/order-scanner-api" />
+            <option value="$PROJECT_DIR$/order-scanner-core" />
+            <option value="$PROJECT_DIR$/order-service" />
+            <option value="$PROJECT_DIR$/order-test" />
             <option value="$PROJECT_DIR$/order-utils" />
           </set>
         </option>

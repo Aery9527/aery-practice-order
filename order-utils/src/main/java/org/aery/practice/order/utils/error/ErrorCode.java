@@ -12,19 +12,19 @@ public enum ErrorCode {
         this.code = code;
     }
 
-    public void thrown() throws GlobalException {
+    public GlobalException thrown() throws GlobalException {
         throw new GlobalException(this);
     }
 
-    public void thrown(Throwable cause) throws GlobalException {
+    public GlobalException thrown(Throwable cause) throws GlobalException {
         throw new GlobalException(this, cause);
     }
 
-    public void thrown(String message) throws GlobalException {
+    public GlobalException thrown(String message) throws GlobalException {
         throw new GlobalException(this, message);
     }
 
-    public void thrown(String message, Throwable cause) throws GlobalException {
+    public GlobalException thrown(String message, Throwable cause) throws GlobalException {
         throw new GlobalException(this, message, cause);
     }
 

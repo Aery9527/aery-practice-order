@@ -1,16 +1,13 @@
-pluginManagement {
-    plugins {
-        id 'org.jetbrains.kotlin.jvm' version '1.9.22'
-    }
-}
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.5.0'
-}
-
 include 'misty-utils'
-include 'order-portal'
-include 'order-utils'
-include 'order-api'
-include 'order-core'
+
 include 'order-customer'
+include 'order-matcher-api'
+include 'order-matcher-core'
+include 'order-portal-api'
+include 'order-portal-core'
+include 'order-scanner-api'
+include 'order-scanner-core'
+include 'order-service'
+include 'order-utils'
+include 'order-test'
 

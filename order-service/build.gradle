@@ -1,0 +1,7 @@
+dependencies {
+
+    implementation project(':order-portal-core')
+    implementation project(':order-matcher-core')
+    implementation project(':order-scanner-core')
+
+}

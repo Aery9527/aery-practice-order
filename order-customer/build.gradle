@@ -1,3 +1,4 @@
 dependencies {
-    api project(':misty-utils')
+    implementation project(':misty-utils')
+    implementation project(':order-portal-api')
 }
