@@ -5,7 +5,7 @@ import org.aery.practice.order.scanner.api.ScannerInfo;
 
 public class CoreScanner implements Scanner {
 
-    private final ScannerInfo info = new ScannerInfo("core-scanner");
+    private final ScannerInfo info = new ScannerInfo("scanner-core");
 
     @Override
     public ScannerInfo getInfo() {

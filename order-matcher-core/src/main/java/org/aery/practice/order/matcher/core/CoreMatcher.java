@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CoreMatcher implements Matcher {
 
-    private final MatcherInfo info = new MatcherInfo("core-matcher");
+    private final MatcherInfo info = new MatcherInfo("matcher-core");
 
     @Override
     public MatcherInfo getInfo() {

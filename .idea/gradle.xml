@@ -15,7 +15,7 @@
             <option value="$PROJECT_DIR$/order-matcher-api" />
             <option value="$PROJECT_DIR$/order-matcher-core" />
             <option value="$PROJECT_DIR$/order-portal-api" />
-            <option value="$PROJECT_DIR$/order-portal-core" />
+            <option value="$PROJECT_DIR$/order-portal-http" />
             <option value="$PROJECT_DIR$/order-scanner-api" />
             <option value="$PROJECT_DIR$/order-scanner-core" />
             <option value="$PROJECT_DIR$/order-service" />

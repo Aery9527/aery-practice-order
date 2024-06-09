@@ -1,19 +1,19 @@
-package org.aery.practice.order.portal.core;
+package org.aery.practice.order.protal.http;
 
 import org.aery.practice.order.portal.api.Portal;
 import org.aery.practice.order.portal.api.PortalInfo;
 import org.aery.practice.order.portal.api.PortalLoader;
 import org.aery.practice.order.utils.ComponentLoaderAbstract;
 
-public class CorePortalLoader extends ComponentLoaderAbstract<Portal, PortalInfo> implements PortalLoader {
+public class HttpPortalLoader extends ComponentLoaderAbstract<Portal, PortalInfo> implements PortalLoader {
 
     public static void main(String[] args) {
-        new CorePortalLoader().start(args);
+        new HttpPortalLoader().start(args);
     }
 
     @Override
-    public Class<? extends CorePortal> getTargetType() {
-        return CorePortal.class;
+    public Class<? extends HttpPortal> getTargetType() {
+        return HttpPortal.class;
     }
 
 }

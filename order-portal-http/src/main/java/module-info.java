@@ -1,7 +1,7 @@
 import org.aery.practice.order.portal.api.PortalLoader;
-import org.aery.practice.order.portal.core.CorePortalLoader;
+import org.aery.practice.order.protal.http.HttpPortalLoader;
 
-open module aery.practice.order.portal.core {
+open module aery.practice.order.portal.http {
 
     requires spring.boot.autoconfigure;
     requires spring.boot;
@@ -13,6 +13,6 @@ open module aery.practice.order.portal.core {
     requires aery.practice.order.utils;
     requires transitive aery.practice.order.portal.api;
 
-    provides PortalLoader with CorePortalLoader;
+    provides PortalLoader with HttpPortalLoader;
 
 }
