@@ -2,5 +2,6 @@ dependencies {
     implementation project(':misty-utils')
 
     implementation project(':order-utils')
+    implementation project(':order-service-core')
     api project(':order-portal-api')
 }

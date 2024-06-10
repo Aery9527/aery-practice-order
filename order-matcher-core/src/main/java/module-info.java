@@ -1,5 +1,5 @@
-import org.aery.practice.order.matcher.api.MatcherLoader;
-import org.aery.practice.order.matcher.core.CoreMatcherLoader;
+import org.aery.practice.order.matcher.api.OrderMatcherLoader;
+import org.aery.practice.order.matcher.core.OrderMatcherByCoreLoader;
 
 open module aery.practice.order.matcher.core {
 
@@ -13,6 +13,6 @@ open module aery.practice.order.matcher.core {
     requires aery.practice.order.utils;
     requires transitive aery.practice.order.matcher.api;
 
-    provides MatcherLoader with CoreMatcherLoader;
+    provides OrderMatcherLoader with OrderMatcherByCoreLoader;
 
 }

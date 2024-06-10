@@ -1,4 +1,4 @@
-import org.aery.practice.order.scanner.api.ScannerLoader;
+import org.aery.practice.order.scanner.api.OrderScannerLoader;
 
 module aery.practice.order.scanner.api {
 
@@ -6,6 +6,6 @@ module aery.practice.order.scanner.api {
 
     exports org.aery.practice.order.scanner.api;
 
-    uses ScannerLoader;
+    uses OrderScannerLoader;
 
 }

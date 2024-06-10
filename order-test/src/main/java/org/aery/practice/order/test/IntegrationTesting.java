@@ -1,40 +1,47 @@
 package org.aery.practice.order.test;
 
-import org.aery.practice.order.customer.Customer;
-import org.aery.practice.order.customer.CustomerLoader;
-import org.aery.practice.order.matcher.api.Matcher;
-import org.aery.practice.order.matcher.api.MatcherLoader;
-import org.aery.practice.order.portal.api.Portal;
-import org.aery.practice.order.portal.api.PortalLoader;
-import org.aery.practice.order.scanner.api.Scanner;
-import org.aery.practice.order.scanner.api.ScannerLoader;
+import org.aery.practice.order.customer.OrderCustomer;
+import org.aery.practice.order.customer.OrderCustomerLoader;
+import org.aery.practice.order.matcher.api.OrderMatcher;
+import org.aery.practice.order.matcher.api.OrderMatcherLoader;
+import org.aery.practice.order.notifier.api.OrderNotifier;
+import org.aery.practice.order.notifier.api.OrderNotifierLoader;
+import org.aery.practice.order.portal.api.OrderPortal;
+import org.aery.practice.order.portal.api.OrderPortalLoader;
+import org.aery.practice.order.scanner.api.OrderScanner;
+import org.aery.practice.order.scanner.api.OrderScannerLoader;
 
 public class IntegrationTesting {
 
     public static void main(String[] args) {
-        MatcherLoader matcherLoader = MatcherLoader.create();
-        Matcher matcher = matcherLoader.start(args);
+        OrderMatcherLoader orderMatcherLoader = OrderMatcherLoader.create();
+        OrderMatcher orderMatcher = orderMatcherLoader.start(args);
 
-        PortalLoader portalLoader = PortalLoader.create();
-        Portal portal = portalLoader.start(args);
+        OrderPortalLoader orderPortalLoader = OrderPortalLoader.create();
+        OrderPortal orderPortal = orderPortalLoader.start(args);
 
-        ScannerLoader scannerLoader = ScannerLoader.create();
-        Scanner scanner = scannerLoader.start(args);
+        OrderScannerLoader orderScannerLoader = OrderScannerLoader.create();
+        OrderScanner orderScanner = orderScannerLoader.start(args);
 
-        CustomerLoader customerLoader = CustomerLoader.create();
-        Customer customer = customerLoader.start(args);
+        OrderNotifierLoader orderNotifierLoader = OrderNotifierLoader.create();
+        OrderNotifier orderNotifier = orderNotifierLoader.start(args);
 
-        customer.simulate(portal);
+        OrderCustomerLoader orderCustomerLoader = OrderCustomerLoader.create();
+        OrderCustomer orderCustomer = orderCustomerLoader.start(args);
 
-        System.out.println("Mather   load : " + matcher.getInfo().name());
-        System.out.println("portal   load : " + portal.getInfo().name());
-        System.out.println("scanner  load : " + scanner.getInfo().name());
-        System.out.println("customer load : " + customer.getInfo().name());
+        orderCustomer.simulate(orderPortal); // 開始模擬客戶送出買賣訂單
 
-        matcherLoader.stop();
-        portalLoader.stop();
-        scannerLoader.stop();
-        customerLoader.stop();
+        System.out.println("OrderMatcher  : " + orderMatcher.getInfo().name());
+        System.out.println("OrderPortal   : " + orderPortal.getInfo().name());
+        System.out.println("OrderScanner  : " + orderScanner.getInfo().name());
+        System.out.println("OrderNotifier : " + orderNotifier.getInfo().name());
+        System.out.println("OrderCustomer : " + orderCustomer.getInfo().name());
+
+        orderMatcherLoader.stop();
+        orderPortalLoader.stop();
+        orderScannerLoader.stop();
+        orderNotifierLoader.stop();
+        orderCustomerLoader.stop();
     }
 
 }

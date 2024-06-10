@@ -3,6 +3,7 @@ dependencies {
     implementation project(':order-portal-http')
     implementation project(':order-matcher-core')
     implementation project(':order-scanner-core')
+    implementation project(':order-notifier-core')
     implementation project(':order-customer')
 
 }

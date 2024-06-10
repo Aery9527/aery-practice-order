@@ -1,4 +1,4 @@
-import org.aery.practice.order.portal.api.PortalLoader;
+import org.aery.practice.order.portal.api.OrderPortalLoader;
 
 module aery.practice.order.portal.api {
 
@@ -6,6 +6,6 @@ module aery.practice.order.portal.api {
 
     exports org.aery.practice.order.portal.api;
 
-    uses PortalLoader;
+    uses OrderPortalLoader;
 
 }

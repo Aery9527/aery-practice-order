@@ -1,4 +1,4 @@
-import org.aery.practice.order.matcher.api.MatcherLoader;
+import org.aery.practice.order.matcher.api.OrderMatcherLoader;
 
 module aery.practice.order.matcher.api {
 
@@ -6,6 +6,6 @@ module aery.practice.order.matcher.api {
 
     exports org.aery.practice.order.matcher.api;
 
-    uses MatcherLoader;
+    uses OrderMatcherLoader;
 
 }

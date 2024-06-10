@@ -1,5 +1,5 @@
-import org.aery.practice.order.portal.api.PortalLoader;
-import org.aery.practice.order.protal.http.HttpPortalLoader;
+import org.aery.practice.order.portal.api.OrderPortalLoader;
+import org.aery.practice.order.protal.http.OrderPortalByHttpLoader;
 
 open module aery.practice.order.portal.http {
 
@@ -11,8 +11,9 @@ open module aery.practice.order.portal.http {
 
     requires misty.utils;
     requires aery.practice.order.utils;
+    requires aery.practice.order.service.api;
     requires transitive aery.practice.order.portal.api;
 
-    provides PortalLoader with HttpPortalLoader;
+    provides OrderPortalLoader with OrderPortalByHttpLoader;
 
 }

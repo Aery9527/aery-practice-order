@@ -1,5 +1,5 @@
-import org.aery.practice.order.scanner.api.ScannerLoader;
-import org.aery.practice.order.scanner.core.CoreScannerLoader;
+import org.aery.practice.order.scanner.api.OrderScannerLoader;
+import org.aery.practice.order.scanner.core.OrderScannerByCoreLoader;
 
 open module aery.practice.order.scanner.core {
 
@@ -13,6 +13,6 @@ open module aery.practice.order.scanner.core {
     requires aery.practice.order.utils;
     requires transitive aery.practice.order.scanner.api;
 
-    provides ScannerLoader with CoreScannerLoader;
+    provides OrderScannerLoader with OrderScannerByCoreLoader;
 
 }

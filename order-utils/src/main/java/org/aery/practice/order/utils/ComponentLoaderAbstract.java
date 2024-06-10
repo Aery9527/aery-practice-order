@@ -15,10 +15,13 @@ public abstract class ComponentLoaderAbstract<ComponentType extends Component<In
     @Override
     public ComponentType start(String... args) throws GlobalException {
         if (this.springContext == null) {
-            Class<? extends ComponentType> targetType = getTargetType();
-            this.springContext = SpringApplication.run(targetType, args);
-            this.component = this.springContext.getBean(targetType);
+            Class<? extends ComponentType> coreType = getCoreType();
+            Class<?>[] allSources = ComponentLoader.mergeSource(this);
+
+            this.springContext = SpringApplication.run(allSources, args);
+            this.component = this.springContext.getBean(coreType);
             return this.component;
+
         } else {
             InfoType info = this.component.getInfo();
             throw ErrorCode.INCORRECT_STATE.thrown(info.name() + " is already started.");
