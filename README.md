@@ -119,6 +119,7 @@ What is expected?
 | subproject                                  | description                                                                                      |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------|
 | [misty-utils](misty-utils)                  | 來自另一個 repo 用 git submodule 引入, 為我長年工作累積的工具包, 僅相依 `slf4j-api` 的 java 原生專案                         |
+| [misty-utils](misty-test)                   | 來自另一個 repo 用 git submodule 引入, 為一些簡單輔助 unit test 的工具                                             |
 | [order-customer](order-customer)            | 用來模擬客戶送出買賣訂單的系統, 可用於系統模擬                                                                         |
 | [order-matcher-api](order-matcher-api)*     | 定義 **訂單匹配系統** 的操作介面                                                                              |
 | [order-matcher-core](order-matcher-core)*   | 實作 **訂單匹配系統** 的操作介面, 與相關核心邏輯                                                                     |

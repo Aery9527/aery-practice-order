@@ -1,3 +1,6 @@
 [submodule "misty-utils"]
 	path = misty-utils
 	url = https://github.com/Aery9527/misty-utils.git
+[submodule "misty-test"]
+	path = misty-test
+	url = https://github.com/Aery9527/misty-test.git

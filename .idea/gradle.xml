@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/misty-test" />
             <option value="$PROJECT_DIR$/misty-utils" />
             <option value="$PROJECT_DIR$/order-customer" />
             <option value="$PROJECT_DIR$/order-matcher-api" />
