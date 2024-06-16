@@ -2,7 +2,6 @@ package org.aery.practice.order.utils.schedule;
 
 import org.aery.practice.order.utils.fortest.CommonTestConfig;
 import org.aery.practice.order.utils.locate.tool.LocateNodeHeartbeatTarget;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -56,7 +55,7 @@ class LocateNodeHeartbeatScheduleTest {
         long heartbeatMs = 1000;
         long resetForTest = heartbeatMs + 100;
 
-        Mockito.doReturn(heartbeatMs).when(this.heartbeatSchedule).getHeartbeatMs();
+        Mockito.doReturn(heartbeatMs).when(this.heartbeatTarget).getHeartbeatMs();
 
         this.heartbeatSchedule.start();
 
@@ -66,16 +65,6 @@ class LocateNodeHeartbeatScheduleTest {
         };
         testHeartbeat.accept(1);
         testHeartbeat.accept(2);
-    }
-
-    @Test
-    void getHeartbeatMs() {
-        Assertions.assertThat(this.heartbeatSchedule.getHeartbeatMs()).isEqualTo(5_000);
-    }
-
-    @Test
-    void getRegardedSuccessMs() {
-        Assertions.assertThat(this.heartbeatSchedule.getRegardedSuccessMs()).isEqualTo(5_000 / 5);
     }
 
 }

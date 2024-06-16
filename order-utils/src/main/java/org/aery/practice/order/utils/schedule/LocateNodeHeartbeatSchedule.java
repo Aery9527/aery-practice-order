@@ -25,15 +25,6 @@ public class LocateNodeHeartbeatSchedule {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    /**
-     * 心跳間隔時間
-     */
-    private final long heartbeatMs = 5_000;
-
-    /**
-     * 要在多久內完成 heartbeat 才算成功, 超過這個秒數還沒有 heartbeat 結束就算異常
-     */
-    private final long regardedSuccessMs = heartbeatMs / 5;
 
     @Autowired
     private LocateNodeHeartbeatTarget heartbeatTarget;
@@ -48,8 +39,10 @@ public class LocateNodeHeartbeatSchedule {
 
     @PostConstruct
     public void start() {
-        if (this.scheduledExecutorService == null) {
+        Runnable loadScheduledExecutorService = () -> {
             this.logger.info("start ScheduledExecutorService");
+
+            long heartbeatMs = this.heartbeatTarget.getHeartbeatMs();
 
             this.scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
             this.scheduledExecutorService.scheduleAtFixedRate(() -> {
@@ -58,30 +51,50 @@ public class LocateNodeHeartbeatSchedule {
                 } catch (Exception e) {
                     this.logger.error("heartbeat exception : ", e);
                 }
-            }, getRegardedSuccessMs(), getHeartbeatMs(), TimeUnit.MILLISECONDS);
-        } else {
+            }, 0, heartbeatMs, TimeUnit.MILLISECONDS);
+        };
+
+        Runnable printIgnoreInfo = () -> {
             this.logger.info("start ScheduledExecutorService ignore");
+        };
+
+        if (this.scheduledExecutorService == null) {
+            synchronized (this) {
+                if (this.scheduledExecutorService == null) {
+                    loadScheduledExecutorService.run();
+                } else {
+                    printIgnoreInfo.run();
+                }
+            }
+        } else {
+            printIgnoreInfo.run();
         }
     }
 
     @PreDestroy
     public void stop() {
-        if (this.scheduledExecutorService == null) {
-            this.logger.warn("stop ScheduledExecutorService ignore");
-        } else {
+        Runnable unloadScheduledExecutorService = () -> {
             StringBuilder callStack = StackFetcher.fetchStacksPretty(1);
             this.logger.warn("stop ScheduledExecutorService by{}{}", System.lineSeparator(), callStack);
             this.scheduledExecutorService.shutdown();
             this.scheduledExecutorService = null;
+        };
+
+        Runnable printIgnoreInfo = () -> {
+            this.logger.warn("stop ScheduledExecutorService ignore");
+        };
+
+        if (this.scheduledExecutorService == null) {
+            printIgnoreInfo.run();
+        } else {
+            synchronized (this) {
+                if (this.scheduledExecutorService == null) {
+                    printIgnoreInfo.run();
+                } else {
+                    unloadScheduledExecutorService.run();
+                }
+            }
         }
-    }
-
-    public long getHeartbeatMs() {
-        return this.heartbeatMs;
-    }
-
-    public long getRegardedSuccessMs() {
-        return this.regardedSuccessMs;
     }
 
 }

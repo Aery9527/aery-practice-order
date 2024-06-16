@@ -37,38 +37,27 @@ public class LocateNodeByHeartbeat implements LocateNode {
     @PostConstruct
     public void initial() {
         this.logger.info("nodeId is {}", this.nodeId);
-        initial_OfflineSignal(this.heartbeatEngine);
-        initial_LocateSignal(this.heartbeatEngine);
+        initial_registerOfflineReceiver(this.heartbeatEngine);
+        initial_registerLocateReceiver(this.heartbeatEngine);
     }
 
-    public void initial_OfflineSignal(LocateNodeHeartbeatEngine heartbeatEngine) {
-        heartbeatEngine.receiveSignalWhenOffline(() -> {
+    public void initial_registerOfflineReceiver(LocateNodeHeartbeatEngine heartbeatEngine) {
+        heartbeatEngine.registerOfflineReceiver(() -> {
             this.online.set(false);
             this.locate.set(LocateNode.OFFLINE_LOCATE);
         });
     }
 
-    public void initial_LocateSignal(LocateNodeHeartbeatEngine heartbeatEngine) {
-        String msgFormat = "node locate change from {} to {}";
-        String from_initial = "initial(" + LocateNode.INITIAL_LOCATE + ")";
-        String from_offline = "offline(" + LocateNode.OFFLINE_LOCATE + ")";
-
-        heartbeatEngine.receiveSignalWhenLocate(locate -> {
+    public void initial_registerLocateReceiver(LocateNodeHeartbeatEngine heartbeatEngine) {
+        heartbeatEngine.registerLocateReceiver(locate -> {
             this.verifier.requireIntMoreThanInclusive("locate", locate, 1);
 
-            if (this.locate.get() == locate) {
+            int lastLocate = this.locate.get();
+            if (lastLocate == locate) {
                 return;
             }
 
-            String from;
-            if (this.locate.get() == LocateNode.INITIAL_LOCATE) {
-                from = from_initial;
-            } else if (this.locate.get() == LocateNode.OFFLINE_LOCATE) {
-                from = from_offline;
-            } else {
-                from = String.valueOf(locate);
-            }
-            this.logger.info(msgFormat, from, locate);
+            this.logger.info("node locate change from {} to {}", lastLocate, locate);
 
             this.locate.set(locate);
             this.online.set(true);

@@ -10,7 +10,9 @@ open module aery.practice.order.utils {
     requires spring.core;
     requires spring.data.redis;
     requires spring.boot.autoconfigure;
+    requires spring.tx;
     requires com.fasterxml.jackson.databind;
+    requires java.compiler;
 
     exports org.aery.practice.order.utils;
     exports org.aery.practice.order.utils.vo;

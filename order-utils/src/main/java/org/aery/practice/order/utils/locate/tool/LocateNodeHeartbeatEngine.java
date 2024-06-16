@@ -6,10 +6,10 @@ import java.util.function.IntConsumer;
 
 public interface LocateNodeHeartbeatEngine {
 
-    void receiveSignalWhenOffline(Runnable receiver);
+    void registerOfflineReceiver(Runnable receiver);
 
-    void receiveSignalWhenLocate(IntConsumer receiver);
+    void registerLocateReceiver(IntConsumer receiver);
 
-    void receiveSignalWhenAliveNodes(Consumer<Set<String>> receiver);
+    void registerAliveNodesReceiver(Consumer<Set<String>> receiver);
 
 }

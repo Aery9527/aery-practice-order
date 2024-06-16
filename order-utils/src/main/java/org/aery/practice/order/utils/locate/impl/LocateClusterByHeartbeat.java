@@ -20,11 +20,11 @@ public class LocateClusterByHeartbeat implements LocateCluster {
 
     @PostConstruct
     public void initial() {
-        initial_AliveNodesSignal(this.heartbeatEngine);
+        initial_registerAliveNodesReceiver(this.heartbeatEngine);
     }
 
-    public void initial_AliveNodesSignal(LocateNodeHeartbeatEngine heartbeatEngine) {
-        heartbeatEngine.receiveSignalWhenAliveNodes(aliveNodes -> {
+    public void initial_registerAliveNodesReceiver(LocateNodeHeartbeatEngine heartbeatEngine) {
+        heartbeatEngine.registerAliveNodesReceiver(aliveNodes -> {
             this.aliveNodes.set(Collections.unmodifiableSet(aliveNodes));
         });
     }
